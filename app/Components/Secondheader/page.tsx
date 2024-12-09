@@ -20,25 +20,106 @@ function Header() {
             <h1 className="text-3xl font-bold text-center sm:text-left">Hekto</h1>
           </div>
 
-          {/* Hamburger Menu for Mobile */}
-          <div className="sm:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-gray-700 hover:text-[#FB2E86] focus:outline-none"
-            >
-              {isMobileMenuOpen ? (
-                <XMarkIcon className="w-6 h-6" />
-              ) : (
-                <Bars3Icon className="w-6 h-6" />
-              )}
-            </button>
-          </div>
+          
+
+{/* Hamburger Menu for Mobile */}
+<div className="sm:hidden p-3">
+  <button
+    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+    className="p-2 text-gray-700 hover:text-[#FB2E86] focus:outline-none"
+  >
+    {isMobileMenuOpen ? (
+      <XMarkIcon className="w-8 h-6" />
+    ) : (
+      <Bars3Icon className="w-6 h-6" />
+    )}
+  </button>
+</div>
+
+{/* Mobile Navigation Menu */}
+{isMobileMenuOpen && (
+  <div className="sm:hidden absolute w-full flex flex-col px-5 py-4 bg-white shadow-lg z-50 top-[80px]"> {/* Position it below header */}
+    <button
+      onClick={() => setIsMobileMenuOpen(false)}
+      className="self-end p-2 text-gray-700 hover:text-[#FB2E86] mb-3"
+    >
+      <XMarkIcon className="w-6 h-6" />
+    </button>
+    <ul className="flex flex-col space-y-4 list-none">
+      <li>
+        <Link
+          href="/"
+          className="block px-4 py-2 text-gray-700 hover:text-[#FB2E86] hover:bg-gray-100 rounded-md"
+          onClick={() => setIsMobileMenuOpen(false)}  // Close the menu after clicking
+        >
+          Home
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/home-about"
+          className="block px-4 py-2 text-gray-700 hover:text-[#FB2E86] hover:bg-gray-100 rounded-md"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          About Us
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/home-contact"
+          className="block px-4 py-2 text-gray-700 hover:text-[#FB2E86] hover:bg-gray-100 rounded-md"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Contact
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/Components/Shopify"
+          className="block px-4 py-2 text-gray-700 hover:text-[#FB2E86] hover:bg-gray-100 rounded-md"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Shop
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/products"
+          className="block px-4 py-2 text-gray-700 hover:text-[#FB2E86] hover:bg-gray-100 rounded-md"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Products
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/blog"
+          className="block px-4 py-2 text-gray-700 hover:text-[#FB2E86] hover:bg-gray-100 rounded-md"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Blog
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/contact"
+          className="block px-4 py-2 text-gray-700 hover:text-[#FB2E86] hover:bg-gray-100 rounded-md"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Contact
+        </Link>
+      </li>
+    </ul>
+  </div>
+)}
 
           {/* Center Section for Navigation Links */}
           <div className="hidden sm:flex items-center justify-center gap-x-8 w-full sm:w-auto">
             {/* Home Link with Dropdown */}
             <ul className="list-none">
               <li className="relative z-10">
+                
+                <Link href={"/."}>
                 <button
                   onClick={() => setIsHomeDropdownOpen(!isHomeDropdownOpen)}
                   className="flex items-center gap-1 hover:text-[#FB2E86] transition-colors"
@@ -46,6 +127,7 @@ function Header() {
                   Home
                   <ChevronDownIcon className="w-4 h-4" />
                 </button>
+                </Link>
                 <ul
                   className={`absolute left-0 mt-2 bg-white shadow-md rounded-md py-2 space-y-1 ${isHomeDropdownOpen ? "block" : "hidden"} list-none`}
                 >
@@ -95,6 +177,15 @@ function Header() {
                   </li>
                   <li>
                     <Link
+                      href="/Components/Shopify"
+                      className="block px-4 py-2 text-gray-700 hover:text-[#FB2E86] hover:bg-gray-100"
+                    >
+                      Shop
+                    </Link>
+                  </li>
+                  
+                  <li>
+                    <Link
                       href="#"
                       className="block px-4 py-2 text-gray-700 hover:text-[#FB2E86] hover:bg-gray-100"
                     >
@@ -109,14 +200,7 @@ function Header() {
                       Blog
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/Components/Shopify"
-                      className="block px-4 py-2 text-gray-700 hover:text-[#FB2E86] hover:bg-gray-100"
-                    >
-                      Shop
-                    </Link>
-                  </li>
+                  
                   <li>
                     <Link
                       href="#"
@@ -133,6 +217,13 @@ function Header() {
             {/* Individual Links */}
             <ul className="list-none">
               <li>
+                <Link className="hover:text-[#FB2E86] transition-colors" href={"/Components/Shopify"}>
+                  Shop
+                </Link>
+              </li>
+            </ul>
+            <ul className="list-none">
+              <li>
                 <Link className="hover:text-[#FB2E86] transition-colors" href={"/products"}>
                   Products
                 </Link>
@@ -145,13 +236,7 @@ function Header() {
                 </Link>
               </li>
             </ul>
-            <ul className="list-none">
-              <li>
-                <Link className="hover:text-[#FB2E86] transition-colors" href={"/Components/Shopify"}>
-                  Shop
-                </Link>
-              </li>
-            </ul>
+            
             <ul className="list-none">
               <li>
                 <Link className="hover:text-[#FB2E86] transition-colors" href={"/contact"}>
